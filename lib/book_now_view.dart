@@ -42,7 +42,7 @@ class _BookNowViewState extends State<BookNowView> {
                 decoration: InputDecoration(
                   labelText: 'Full Name',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.email),
+                  prefixIcon: Icon(Icons.account_circle),
                 ),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) {
@@ -70,22 +70,18 @@ class _BookNowViewState extends State<BookNowView> {
               // phone nmbr
               TextFormField(
                 controller: _ctrlPhone,
-                obscureText: isHide,
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   labelText: 'Phone Number',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.lock),
-                  suffixIcon: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isHide = !isHide;
-                      });
-                    },
-                    child:
-                        Icon(isHide ? Icons.visibility : Icons.visibility_off),
-                  ),
+                  prefixIcon: Icon(Icons.local_phone),
                 ),
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value) {
+                  return !EmailValidator.validate(value.toString())
+                      ? 'Email tidak valid!'
+                      : null;
+                },
               ),
               // city
               TextFormField(
@@ -94,7 +90,7 @@ class _BookNowViewState extends State<BookNowView> {
                 decoration: InputDecoration(
                   labelText: 'City',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.email),
+                  prefixIcon: Icon(Icons.location_city),
                 ),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) {
@@ -102,6 +98,27 @@ class _BookNowViewState extends State<BookNowView> {
                       ? 'Email tidak valid!'
                       : null;
                 },
+              ),
+              TextButton(
+                onPressed: () => showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    title: const Text('AlertDialog Title'),
+                    content: const Text('AlertDialog description'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                          '/flutter/',
+                          (route) => false,
+                          );
+                        },
+                        child: const Text('ok'),
+                      ),
+                    ],
+                  ),
+                ),
+                child: const Text('Book Now'),
               ),
               const SizedBox(
                 height: 25,
@@ -117,7 +134,7 @@ class _BookNowViewState extends State<BookNowView> {
                   //   (route) => false,
                   // );
                 },
-                icon: const Icon(Icons.check_box),
+                icon: const Icon(Icons.save),
                 label: const Text("Submit"),
                 style: ElevatedButton.styleFrom(
                     elevation: 2,
