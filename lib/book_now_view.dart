@@ -46,6 +46,9 @@ class _BookNowViewState extends State<BookNowView> {
                 ),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Name cannot be left empty';
+                  }
                   return !EmailValidator.validate(value.toString())
                       ? 'Email tidak valid!'
                       : null;
@@ -62,6 +65,9 @@ class _BookNowViewState extends State<BookNowView> {
                 ),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Email cannot be left empty';
+                  }
                   return !EmailValidator.validate(value.toString())
                       ? 'Email tidak valid!'
                       : null;
@@ -78,6 +84,9 @@ class _BookNowViewState extends State<BookNowView> {
                 ),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Phone number cannot be left empty';
+                  }
                   return !EmailValidator.validate(value.toString())
                       ? 'Email tidak valid!'
                       : null;
@@ -94,6 +103,9 @@ class _BookNowViewState extends State<BookNowView> {
                 ),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'City number cannot be left empty';
+                  }
                   return !EmailValidator.validate(value.toString())
                       ? 'Email tidak valid!'
                       : null;
