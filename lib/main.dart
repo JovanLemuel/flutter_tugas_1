@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tugas_1/flutter_widget.dart';
 
 void main() {
-  runApp(const FlutterWidget());
+  // runApp(const FlutterWidget());
+  runApp(
+    MaterialApp(
+      home: const FlutterWidget(),
+      routes: {
+        '/book/': (context) => const BookNowView(),
+        '/flutter/': (context) => const FlutterWidget(),
+      },
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {

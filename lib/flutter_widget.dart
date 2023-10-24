@@ -189,6 +189,25 @@ class _FlutterWidgetState extends State<FlutterWidget> {
                 ),
               ),
             ),
+            Positioned(
+              bottom: 10,
+              right: 10,
+              child: FloatingActionButton.extended(
+                onPressed: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/book/',
+                    (route) => false,
+                  );
+                },
+                label: const Text('Book Now'),
+                gradient: LinearGradient(
+                  colors: [Colors.white, Colors.blue],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+                foregroundColor: Colors.black,
+              ),
+            ),
           ],
         ),
       ),
