@@ -124,7 +124,7 @@ class _BookNowViewState extends State<BookNowView> {
                 height: 25,
               ),
               ElevatedButton.icon(
-                onPressed: () {
+                // onPressed: () {
                   // Fluttertoast.showToast(
                   //     msg:
                   //         "Email : ${_ctrlEmail.text} & Password ${_ctrlPass.text}",
@@ -133,6 +133,13 @@ class _BookNowViewState extends State<BookNowView> {
                   //   '/flutter/',
                   //   (route) => false,
                   // );
+                // },
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Processing Data')),
+                    );
+                  }
                 },
                 icon: const Icon(Icons.save),
                 label: const Text("Submit"),
