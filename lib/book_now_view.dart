@@ -147,7 +147,7 @@ class _BookNowViewState extends State<BookNowView> {
                   // );
                 // },
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
+                  if (_bookingKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Processing Data')),
                     );
